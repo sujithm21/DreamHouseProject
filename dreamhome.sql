@@ -236,3 +236,19 @@ where DurationInYears <1 and propertyNo in (select propertyNo from propertyforre
 
 alter table staff
 add foreign key(branchNo) references branch(branchNo);
+
+-- 2nd queries list 
+
+-- f
+select * from propertyforrent
+where city = 'Glasgow' and rent > 450;
+
+
+-- h
+select comment , clientNo
+from viewing ;
+
+-- i 
+select v.comment, v.clientNo , c.fName,c.lname,c.telNo
+from viewing v , client c
+where v.comment is NULL;
