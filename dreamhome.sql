@@ -98,6 +98,22 @@ CREATE TABLE  viewing
  viewDate date,
  comment varchar(15)
 );
+alter table viewing 
+add column Type varchar(30);
+
+alter table viewing 
+add column Rent int;
+
+alter table viewing 
+add column propertyAddress varchar(30),add column Name varchar(30);
+
+alter table viewing 
+add primary key(viewDate);
+
+alter table viewing 
+add  foreign key(propertyNo) references propertyForRent(propertyNo);
+
+
 INSERT INTO viewing VALUES('CR56','PA14','2015-05-24','too small');
 INSERT INTO viewing VALUES('CR76','PG4','2015-04-20','too remote');
 INSERT INTO viewing VALUES('CR56','PG4','2015-05-26','');
@@ -116,7 +132,7 @@ INSERT INTO registration VALUES('CR76','B005','SL41','2015-01-13');
 INSERT INTO registration VALUES('CR56','B003','SG37','2014-04-13');
 INSERT INTO registration VALUES('CR74','B003','SG37','2013-11-16');
 INSERT INTO registration VALUES('CR62','B007','SA9','2014-03-07');
-
+drop table if exists lease;
 create table lease
 (leaseId int primary key,
 clientNo varchar(30) ,
