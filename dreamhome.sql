@@ -24,6 +24,8 @@ CREATE TABLE staff
  lName varchar(10),
  position varchar(10),
  sex char(1),
+ telephone varchar(15),
+ address varchar(25),
  DOB date,
  salary int,
  branchNo char(5)
@@ -31,12 +33,12 @@ CREATE TABLE staff
 ALTER TABLE staff 
 Add foreign key (branchNo) references branch( branchNo);
 
-INSERT INTO staff VALUES('SL21','John','White','Manager','M','1965-10-01',30000,'B005');
-INSERT INTO staff VALUES('SG37','Ann','Beech','Assistant','F','1980-11-10',12000,'B003');
-INSERT INTO staff VALUES('SG14','David','Ford','Supervisor','M','1978-03-24',18000,'B003');
-INSERT INTO staff VALUES('SA9','Mary','Howe','Assistant','F','1990-02-19',9000,'B007');
-INSERT INTO staff VALUES('SG5','Susan','Brand','Manager','F','1960-06-03',24000,'B003');
-INSERT INTO staff VALUES('SL41','Julie','Lee','Assistant','F','1985-06-13',9000,'B005');
+INSERT INTO staff VALUES('SL21','John','White','Manager','M','123456789','London','1965-10-01',30000,'B005');
+INSERT INTO staff VALUES('SG37','Ann','Beech','Assistant','F','987654321','Glasgow','1980-11-10',12000,'B003');
+INSERT INTO staff VALUES('SG14','David','Ford','Supervisor','M','3334455555','Glagow','1978-03-24',18000,'B003');
+INSERT INTO staff VALUES('SA9','Mary','Howe','Assistant','F','6547893213','Aberdeen','1990-02-19',9000,'B007');
+INSERT INTO staff VALUES('SG5','Susan','Brand','Manager','F','4567891230','Glasgow','1960-06-03',24000,'B003');
+INSERT INTO staff VALUES('SL41','Julie','Lee','Assistant','F','9517532580','London','1985-06-13',9000,'B005');
 
 DROP TABLE IF EXISTS privateOwner;
 CREATE TABLE privateOwner
@@ -231,3 +233,6 @@ where DurationInYears <1 and propertyNo in (select propertyNo from propertyforre
 
 -- s
 
+
+alter table staff
+add foreign key(branchNo) references branch(branchNo);
