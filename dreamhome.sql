@@ -135,6 +135,24 @@ INSERT INTO registration VALUES('CR56','B003','SG37','2014-04-13');
 INSERT INTO registration VALUES('CR74','B003','SG37','2013-11-16');
 INSERT INTO registration VALUES('CR62','B007','SA9','2014-03-07');
 
+-- changes made by sriram
+
+DROP TABLE IF EXISTS clientregistration;
+CREATE TABLE clientregistration
+(clientNo char(5) PRIMARY KEY,
+ fName varchar(20),
+ branchNo char(5),
+ baddress varchar(50),
+ regBy varchar(20),
+ regDate date,
+ type char(10),
+ maxRent int
+);
+
+alter table clientregistration add foreign key (branchNo) references branch(branchNo);
+
+-- changes made by sriram end
+
 create table lease
 (leaseId int primary key,
 clientNo varchar(30) ,
