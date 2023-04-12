@@ -28,6 +28,8 @@ CREATE TABLE staff
  salary int,
  branchNo char(5)
 );
+ALTER TABLE staff 
+Add foreign key (branchNo) references branch( branchNo);
 
 INSERT INTO staff VALUES('SL21','John','White','Manager','M','1965-10-01',30000,'B005');
 INSERT INTO staff VALUES('SG37','Ann','Beech','Assistant','F','1980-11-10',12000,'B003');
@@ -115,18 +117,23 @@ INSERT INTO registration VALUES('CR56','B003','SG37','2014-04-13');
 INSERT INTO registration VALUES('CR74','B003','SG37','2013-11-16');
 INSERT INTO registration VALUES('CR62','B007','SA9','2014-03-07');
 
+drop table lease;
 create table lease
 (leaseId int primary key,
 clientNo varchar(30) ,
 Rent int,
+Deposit Boolean,
 paymentMethod varchar(30),
 propertyNo varchar(30),
 rentStartDt varchar(20),
 rentEndDt varchar(20),
-DurationInYears float);
+DurationInYears float,
+FOREIGN KEY (propertyNo) references propertyforrent(propertyNo));
 
-insert into lease values (1,'CR56',450,'cash','PG4','01/06/2004','31/05/2005',1);
-insert into lease values (2,'CR74',950,'cheque','PA14','01/03/2003','31/04/2006',3);
+SET FOREIGN_KEY_CHECKS=0;
+
+insert into lease values (1,'CR56',450,TRUE,'cash','PG4','01/06/2004','31/05/2005',1);
+insert into lease values (2,'CR74',950,TRUE,'cheque','PA14','01/03/2003','31/04/2006',3);
 
 show tables;
 select * from branch;
